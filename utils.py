@@ -8,3 +8,7 @@ def hnkarma(username):
     if user_json is None:
         return None
     return user_json['karma']
+
+
+def send_email(to, body):
+    pass

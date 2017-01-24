@@ -1,6 +1,7 @@
 import requests_mock
 
-from utils import hnkarma
+from app import mail
+from utils import hnkarma, send_email
 
 
 class TestHackerNews(object):
@@ -23,3 +24,15 @@ class TestHackerNews(object):
         with requests_mock.Mocker() as m:
             m.get('https://hacker-news.firebaseio.com/v0/user/usernothere.json', text='null')
             assert hnkarma('usernothere') is None
+
+
+class TestEmail(object):
+    def test_email_sending(self):
+        with mail.record_messages() as outbox:
+            send_email('bob@foobar.com', 'body')
+
+            assert len(outbox) == 1
+            email = outbox[0]
+            assert email.subject == 'Email from flasktdd'
+            assert email.body == 'body'
+            assert email.recipients == ['bob@foobar.com']

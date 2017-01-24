@@ -1,2 +1,3 @@
+flask_mail
 mock
 requests_mock

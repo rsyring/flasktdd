@@ -1,7 +1,10 @@
 from flask import Flask, request
+from flask_mail import Mail
+
 from utils import hnkarma
 
 app = Flask(__name__)
+mail = Mail(app)
 
 
 @app.route('/')
