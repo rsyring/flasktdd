@@ -1,0 +1,3 @@
+
+def hnkarma(username):
+    pass
