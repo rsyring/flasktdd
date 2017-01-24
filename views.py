@@ -15,4 +15,9 @@ def hello_name(name):
     if 'hnk' in request.args:
         karma = hnkarma(name)
         response += '\nHacker News karma: {}'.format(karma)
-    return response
+    if 'deliver_to' in request.args:
+        deliver_to = request.args['deliver_to']
+        send_email(deliver_to, response)
+        return 'Email hello delivered to: {}'.format(deliver_to)
+    else:
+        return response

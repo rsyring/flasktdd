@@ -39,6 +39,8 @@ class TestWebViews(object):
 
     def test_email_hello_2(self):
         with mock.patch('views.send_email') as m_send_email:
-            self.ta.get('/hello/rsyring?deliver_to=randy@thesyrings.us')
+            resp = self.ta.get('/hello/rsyring?deliver_to=randy@thesyrings.us')
 
-            m_send_email.assert_called_once_with('foo', 'bar')
+            m_send_email.assert_called_once_with('randy@thesyrings.us', 'Hello, rsyring!')
+
+        assert 'Email hello delivered to: randy@thesyrings.us' in resp
