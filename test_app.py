@@ -1,7 +1,7 @@
 import flask_webtest
 import mock
 
-from app import app
+from views import app
 
 
 class TestWebViews(object):
@@ -20,7 +20,7 @@ class TestWebViews(object):
         assert 'Hacker News' not in resp
 
     def test_hacker_news_lookup(self):
-        with mock.patch('app.hnkarma') as m_hnkarma:
+        with mock.patch('views.hnkarma') as m_hnkarma:
             m_hnkarma.return_value = 7
             resp = self.ta.get('/hello/rsyring?hnk=1')
         assert 'Hello, rsyring!' in resp
