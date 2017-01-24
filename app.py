@@ -1,4 +1,5 @@
-from flask import Flask
+from flask import Flask, request
+from utils import hnkarma
 
 app = Flask(__name__)
 
@@ -10,4 +11,8 @@ def hello_world():
 
 @app.route('/hello/<name>')
 def hello_name(name):
-    return 'Hello, {}!'.format(name)
+    response = 'Hello, {}!'.format(name)
+    if 'hnk' in request.args:
+        karma = hnkarma(name)
+        response += '\nHacker News karma: {}'.format(karma)
+    return response
