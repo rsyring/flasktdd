@@ -25,6 +25,16 @@ Getting Started
 
 [1]: https://pypi.python.org/pypi/virtualenv
 
+Next Steps
+==========
+
+Using TDD and without ever running the application:
+
+1. Create a Flask view to say "Hello, World!"
+2. Create a Flask view to say "Hello, `$name`!" where `$name` comes from a URL: "/hello/Fred"
+3. Optionally request $name from the Hacker News user API, if present, display Karma.
+4. Optionally send email hello instead of displaying on the screen.
+
 Our Tools
 ==============
 
