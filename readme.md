@@ -34,3 +34,7 @@ Getting to know your tools is really important:
 2. [WebTest: library for testing WSGI applications](https://webtest.readthedocs.io/en/latest/)
 3. [Flask-WebTest: eases testing Flask apps w/ WebTest](https://flask-webtest.readthedocs.io/en/latest/)
 4. [py.test](http://docs.pytest.org/en/latest/)
+5. [Requests]()
+6. [Requests Mock](https://requests-mock.readthedocs.io/en/latest/)
+7. [Mock](https://docs.python.org/dev/library/unittest.mock.html)
+8. [Flask Mail](http://pythonhosted.org/Flask-Mail/)
