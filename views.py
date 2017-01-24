@@ -1,7 +1,7 @@
 from flask import request
 
 from app import app
-from utils import hnkarma
+from utils import hnkarma, send_email
 
 
 @app.route('/')

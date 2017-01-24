@@ -1,6 +1,7 @@
 import flask_webtest
 import mock
 
+from app import mail
 from views import app
 
 
@@ -26,3 +27,18 @@ class TestWebViews(object):
         assert 'Hello, rsyring!' in resp
         assert 'Hacker News karma: 7' in resp
 
+    def test_email_hello_1(self):
+        with mail.record_messages() as outbox:
+            self.ta.get('/hello/rsyring?deliver_to=randy@thesyrings.us')
+
+            assert len(outbox) == 1
+            email = outbox[0]
+            assert email.subject == 'Email from flasktdd'
+            assert email.body == 'Hello, rsyring!'
+            assert email.recipients == ['randy@thesyrings.us']
+
+    def test_email_hello_2(self):
+        with mock.patch('views.send_email') as m_send_email:
+            self.ta.get('/hello/rsyring?deliver_to=randy@thesyrings.us')
+
+            m_send_email.assert_called_once_with('foo', 'bar')
