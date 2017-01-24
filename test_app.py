@@ -11,3 +11,7 @@ class TestWebViews(object):
     def test_hello_world(self):
         resp = self.ta.get('/')
         assert 'Hello, World!' in resp
+
+    def test_hello_fred(self):
+        resp = self.ta.get('/hello/Fred')
+        assert 'Hello, Fred!' in resp
