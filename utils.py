@@ -1,5 +1,7 @@
 import requests
 
+from app import mail
+
 
 def hnkarma(username):
     url = 'https://hacker-news.firebaseio.com/v0/user/{}.json'.format(username)
@@ -11,4 +13,8 @@ def hnkarma(username):
 
 
 def send_email(to, body):
-    pass
+    mail.send_message(
+        subject='Email from flasktdd',
+        body=body, recipients=[to],
+        sender='someone@example.com'
+    )

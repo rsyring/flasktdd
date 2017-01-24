@@ -1,6 +1,6 @@
 import requests_mock
 
-from app import mail
+from app import app, mail
 from utils import hnkarma, send_email
 
 
@@ -28,7 +28,7 @@ class TestHackerNews(object):
 
 class TestEmail(object):
     def test_email_sending(self):
-        with mail.record_messages() as outbox:
+        with app.app_context(), mail.record_messages() as outbox:
             send_email('bob@foobar.com', 'body')
 
             assert len(outbox) == 1
