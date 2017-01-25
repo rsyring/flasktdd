@@ -24,6 +24,7 @@ class TestWebViews(object):
         with mock.patch('views.hnkarma') as m_hnkarma:
             m_hnkarma.return_value = 7
             resp = self.ta.get('/hello/rsyring?hnk=1')
+            m_hnkarma.assert_called_once_with('rsyring')
         assert 'Hello, rsyring!' in resp
         assert 'Hacker News karma: 7' in resp
 
